@@ -1,7 +1,4 @@
 
-
-
-
 function addHoroscope() {
     var personNummer = document.getElementById("birthMf").value;
     data = new FormData();
@@ -15,10 +12,8 @@ function addHoroscope() {
         }, */
     }).then((response) => {
         return response.json()
-    }).then((data) => {
-        /* var readHoroscope = document.getElementById("content");
-        readHoroscope.innerText = data;    */   
-        document.getElementById("content").innerHTML = data.success;  
+    }).then((data) => {   
+        viewHoroscope();
         console.log(data)
     }).catch((err) => {
         console.log("err: ", err)
@@ -26,14 +21,11 @@ function addHoroscope() {
 }
 
 function viewHoroscope() {
-    data = new FormData();
-    data.set("view", true);
-    
     fetch("./viewHoroscope.php", {
-        method: "GET",
-        body: data
+    method: "GET"
     }).then((response) => response.json())
     .then((json) => {
+        console.log("view", json);
     })
 }
 
