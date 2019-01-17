@@ -1,0 +1,14 @@
+
+
+#content {
+    display: flex;
+    justify-content: center;
+    background-color: red;
+}
+
+.buttonsContent {
+    padding-top: 3em;
+    display: flex;
+    justify-content: center;
+
+}
