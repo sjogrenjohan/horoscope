@@ -1,71 +1,62 @@
 <?php
 
-function getHoroscope($month, $day) {
+require "./saveSession.php";
+
+function updateHoroscope($personNumber, $force) {
+
+    $dateOfBirth = new DateTime($personNumber);   
+    $month = $dateOfBirth->format('m');
+    $day = $dateOfBirth->format('d');
     
     if (($month == 1 && 20 <= $day) || ($month == 2 && 18 >= $day)){
-        $success = saveSession("Vattumannen");
-        return array('Vattumannen'=>$success);
+        saveSession("Vattumannen", $force);
         die;
     }
     else if (($month == 2 && 19 <= $day) || ($month == 3 && 20 >= $day)){
-        $success = saveSession("Fiskarna");
-        return array('Fiskarna'=>$success);
+        saveSession("Fiskarna", $force);
         die;
     }
     else if (($month == 3 && 21 <= $day) || ($month == 4 && 19 >=$day)){
-        $success = saveSession("Väduren");
-        return array('Väduren'=>$success);
+        saveSession("Väduren", $force);
         die;
     }
     else if (($month == 4 && 20 <= $day) || ($month == 5 && 21 >= $day)){
-        $success = saveSession("Oxen");
-        return array('Oxen'=>$success);
+        saveSession("Oxen", $force);
         die;
     }
     else if (($month == 5 && 22 <= $day) || ($month == 6 && 21 >= $day)){
-        saveSession("Tvillingarna");
-        return array('Tvillingarna'=>$success);
+        saveSession("Tvillingarna", $force);
         die;
     }
     else if (($month == 6 && 22 <= $day) || ($month == 7 && 22 >= $day)){
-        $success = saveSession("Kräftan");
-        return array('Kräftan'=>$success);
+        saveSession("Kräftan", $force);
         die;
     }
     else if (($month == 7 && 23 <= $day) || ($month == 8 && 22 >= $day)){
-        $success = saveSession("Lejonet");
-        return array('Lejonet'=>$success);
+        saveSession("Lejonet", $force);
         die;
     }
     else if (($month == 8 && 23 <= $day) || ($month == 9 && 22 >= $day)){
-        $success = saveSession("Jungfrun");
-        return array('Jungfrun'=>$success);
+        saveSession("Jungfrun", $force);
         die;
     }
     else if (($month == 9 && 23 <= $day) || ($month == 10 && 22 >= $day)){
-        $success = saveSession("Vågen");
-        return array('Vågen'=>$success);
+        saveSession("Vågen", $force);
         die;
     }
     else if (($month == 10 && 23 <= $day) || ($month == 11 && 22 >= $day)){
-        $success = saveSession("Skorpionen");
-        return array('Skorpionen'=>$success);
+        saveSession("Skorpionen", $force);
         die;
     }
     else if (($month == 11 && 23 <= $day) || ($month == 12 && 21 >= $day)){
-        $success = saveSession("Skytten");
-        return array('Skytten'=>$success);
+        saveSession("Skytten", $force);
         die;
     }
     else if (($month == 12 && 22 <= $day) || ($month == 1 && 19 >= $day)){
-        $success = saveSession("Stenbocken");
-        return array('Stenbocken'=>$success);
-        die;
-    }
-    else {
-        return array('success'=>false);
+        saveSession("Stenbocken", $force);
         die;
     }
 }
+
     
-    ?>
+?>

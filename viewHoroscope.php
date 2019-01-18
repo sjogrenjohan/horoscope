@@ -5,6 +5,8 @@
 
         if (isset($_SESSION["horoskop"])) {
             echo json_encode(array($_SESSION["horoskop"]));
+        } else {
+            echo json_encode(array());
         }
     }
 ?>

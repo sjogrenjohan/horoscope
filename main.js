@@ -1,15 +1,15 @@
 
-function addHoroscope() {
-    var personNummer = document.getElementById("birthMf").value;
+function getFormData() {
+    var personNumber = document.getElementById("birthMf").value;
     data = new FormData();
-    data.set("personNummer", personNummer);
+    data.set("personNumber", personNumber);
+    return data;
+}
 
+function addHoroscope() {
     fetch("./addHoroscope.php", {
         method: "POST", 
-        body: data
-        /* headers: {
-        "Content-Type": "application/json",
-        }, */
+        body: getFormData()
     }).then((response) => {
         return response.json()
     }).then((data) => {   
@@ -20,37 +20,36 @@ function addHoroscope() {
     })
 }
 
-function viewHoroscope() {
+ function viewHoroscope() {
     fetch("./viewHoroscope.php", {
-    method: "GET"
+        method: "GET"
     }).then((response) => response.json())
     .then((json) => {
-        console.log("view", json);
-    })
+        var printHoroscope = document.getElementById("horoscope");
+        printHoroscope.innerText = json;
+        console.log(json);
+    }) 
 }
 
 function deleteHoroscope() {
-    data = new FormData();
-    data.set("delete", true);
-
     fetch("./deleteHoroscope.php", {
         method: "DELETE",
-        body: data
     }).then((response) => {
         return response.json()
     }).then((data) => {
-        console.log(data)
+        viewHoroscope();
+        console.log(data);
     })
 }
 function updateHoroscope() {
-    data = new FormData();
-    data.set("updateNumber", true);
-
     fetch("./updateHoroscope.php", {
-        method: "PUT"
+        method: "PUT",
+        body: getFormData()
     }).then((response) => {
+        console.log(response);
         return response.json()
     }).then((data) => {
+        viewHoroscope();
         console.log(data)
     })
 }
