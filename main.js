@@ -2,7 +2,7 @@
 function getFormData() {
     var personNumber = document.getElementById("birthMf").value;
     data = new FormData();
-    data.set("personNumber", personNumber);
+    data.append("personNumber", personNumber);
     return data;
 }
 
@@ -33,7 +33,7 @@ function addHoroscope() {
 
 function deleteHoroscope() {
     fetch("./deleteHoroscope.php", {
-        method: "DELETE",
+        method: "DELETE"
     }).then((response) => {
         return response.json()
     }).then((data) => {
@@ -43,10 +43,9 @@ function deleteHoroscope() {
 }
 function updateHoroscope() {
     fetch("./updateHoroscope.php", {
-        method: "PUT",
+        method: "POST",
         body: getFormData()
     }).then((response) => {
-        console.log(response);
         return response.json()
     }).then((data) => {
         viewHoroscope();
